@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcosystemOS — Login</title>
+  <meta name="description" content="EcosystemOS: The AI-powered operating system for innovation ecosystems. Define rules, launch programmes, let AI handle the matching.">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .login-grid {
+      position: absolute; inset: 0; opacity: .04;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .login-nodes { position: absolute; inset: 0; overflow: hidden; }
+    .node {
+      position: absolute; width: 4px; height: 4px; border-radius: 50%;
+      background: var(--accent); opacity: .3;
+      animation: float 6s infinite ease-in-out;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) scale(1); opacity: .3; }
+      50% { transform: translateY(-20px) scale(1.5); opacity: .6; }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-page">
+    <div class="login-bg"></div>
+    <div class="login-grid"></div>
+    <div class="login-nodes" id="loginNodes"></div>
+
+    <div class="login-card card">
+      <div class="login-logo">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="24" cy="24" r="20" opacity=".3"/>
+          <circle cx="24" cy="14" r="4" fill="currentColor" stroke="none"/>
+          <circle cx="14" cy="30" r="4" fill="currentColor" stroke="none"/>
+          <circle cx="34" cy="30" r="4" fill="currentColor" stroke="none"/>
+          <line x1="24" y1="18" x2="14" y2="26" opacity=".6"/>
+          <line x1="24" y1="18" x2="34" y2="26" opacity=".6"/>
+          <line x1="14" y1="30" x2="34" y2="30" opacity=".6"/>
+        </svg>
+      </div>
+      <h1 class="login-title">EcosystemOS</h1>
+      <p class="login-tagline">The operating system for innovation ecosystems</p>
+      <p class="login-desc">Define rules once. Launch programmes in minutes.<br>Let AI handle the rest.</p>
+
+      <a href="dashboard.html" class="btn btn-primary btn-lg btn-full" id="loginBtn">
+        Continue as Admin
+      </a>
+
+      <p class="login-demo">Demo environment — Cradle Fund Innovation Ecosystem Pilot</p>
+
+      <div class="login-footer">
+        <span>Powered by <strong>Gemini</strong></span>
+        <span>Built for <strong>MyHack 2026</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Generate floating network nodes
+    const container = document.getElementById('loginNodes');
+    for (let i = 0; i < 30; i++) {
+      const node = document.createElement('div');
+      node.className = 'node';
+      node.style.left = Math.random() * 100 + '%';
+      node.style.top = Math.random() * 100 + '%';
+      node.style.animationDelay = (Math.random() * 6) + 's';
+      node.style.animationDuration = (4 + Math.random() * 4) + 's';
+      container.appendChild(node);
+    }
+  </script>
+</body>
+</html>

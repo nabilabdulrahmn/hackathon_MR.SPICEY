@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Insights — EcosystemOS</title>
+<link rel="stylesheet" href="css/styles.css">
+<style>
+.insights-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.chart-card{position:relative;overflow:hidden}
+.chart-card h3{margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.chart-area{height:220px;position:relative;margin-top:16px}
+/* Line chart */
+.line-chart{width:100%;height:100%;position:relative}
+.lc-grid{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between}
+.lc-grid-line{border-bottom:1px solid var(--border);position:relative}
+.lc-grid-line span{position:absolute;left:-36px;top:-8px;font-size:.625rem;color:var(--text-muted);font-variant-numeric:tabular-nums}
+.lc-svg{position:absolute;inset:0}
+.lc-labels{display:flex;justify-content:space-between;margin-top:8px;font-size:.625rem;color:var(--text-muted)}
+/* Bar chart */
+.bar-chart{display:flex;align-items:flex-end;justify-content:space-around;height:100%;gap:8px;padding-top:20px}
+.bar-group{display:flex;flex-direction:column;align-items:center;flex:1;height:100%;justify-content:flex-end}
+.bar{width:100%;max-width:48px;border-radius:4px 4px 0 0;transition:all .3s var(--ease);cursor:pointer;position:relative;min-height:4px}
+.bar:hover{filter:brightness(1.3);transform:scaleY(1.03)}
+.bar-label{font-size:.625rem;color:var(--text-muted);margin-top:6px;text-align:center}
+.bar-val{font-size:.625rem;font-weight:700;color:var(--text-primary);margin-bottom:4px;font-variant-numeric:tabular-nums}
+/* Leaderboard */
+.lb-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)}
+.lb-row:last-child{border-bottom:none}
+.lb-rank{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.6875rem;font-weight:800;flex-shrink:0;font-variant-numeric:tabular-nums}
+.lb-rank-1{background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#000}
+.lb-rank-2{background:linear-gradient(135deg,#d1d5db,#9ca3af);color:#000}
+.lb-rank-3{background:linear-gradient(135deg,#d97706,#b45309);color:#fff}
+.lb-rank-n{background:var(--bg-surface);color:var(--text-muted)}
+.lb-info{flex:1;min-width:0}
+.lb-name{font-size:.8125rem;font-weight:600}
+.lb-detail{font-size:.6875rem;color:var(--text-muted)}
+.lb-score{font-size:1rem;font-weight:800;font-variant-numeric:tabular-nums}
+.lb-bar{flex:0 0 80px;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.lb-bar-fill{height:100%;border-radius:3px;background:var(--accent)}
+.lb-stars{font-size:.75rem;letter-spacing:1px;color:var(--score-mid)}
+/* Loop panel */
+.loop-panel{background:linear-gradient(135deg,rgba(99,102,241,.08),rgba(34,197,94,.06));border:1px solid rgba(99,102,241,.2);border-radius:var(--r-card);padding:20px;text-align:center}
+.loop-icon{font-size:2rem;margin-bottom:8px}
+.loop-title{font-size:1rem;font-weight:700;color:var(--accent)}
+.loop-stat{font-size:2.5rem;font-weight:800;color:var(--text-primary);margin:8px 0;font-variant-numeric:tabular-nums}
+.loop-desc{font-size:.8125rem;color:var(--text-secondary);line-height:1.5}
+.loop-badge{display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:6px 14px;border-radius:var(--r-pill);background:var(--score-high-bg);color:var(--score-high);font-size:.75rem;font-weight:600}
+.loop-pulse{width:8px;height:8px;border-radius:50%;background:var(--score-high);animation:lp 2s infinite}
+@keyframes lp{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+/* KPI strip */
+.kpi-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.kpi{text-align:center;padding:16px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-card)}
+.kpi-num{font-size:1.5rem;font-weight:800;font-variant-numeric:tabular-nums}
+.kpi-label{font-size:.6875rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.04em;margin-top:4px}
+.kpi-trend{font-size:.6875rem;margin-top:4px;font-weight:500}
+@media(max-width:900px){.insights-grid{grid-template-columns:1fr}.kpi-strip{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="dashboard.html" class="topnav-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><circle cx="12" cy="7" r="3" fill="currentColor" stroke="none" opacity=".9"/><circle cx="5" cy="18" r="3" fill="currentColor" stroke="none" opacity=".9"/><circle cx="19" cy="18" r="3" fill="currentColor" stroke="none" opacity=".9"/><line x1="12" y1="10" x2="5" y2="15" opacity=".5"/><line x1="12" y1="10" x2="19" y2="15" opacity=".5"/><line x1="5" y1="18" x2="19" y2="18" opacity=".5"/></svg>EcosystemOS</a>
+  <div class="topnav-links"><a href="dashboard.html">Dashboard</a><a href="templates.html">Templates</a><a href="programme.php">Programmes</a><a href="entities.html">Entities</a><a href="insights.html" class="active">Insights</a></div>
+  <div class="topnav-right">
+    <span class="topnav-org">Organisation: Cradle Fund <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span>
+    <div class="topnav-bell"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg><span class="dot"></span></div>
+    <div class="topnav-avatar" onclick="this.querySelector('.avatar-dropdown').classList.toggle('open')">FH<div class="avatar-dropdown"><a href="#">Profile</a><a href="#">Settings</a><a href="index.html">Sign out</a></div></div>
+  </div>
+</nav>
+
+<main class="page">
+  <header class="page-header">
+    <h1><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-3px;margin-right:6px"><path d="M21 12a9 9 0 11-6.22-8.56"/><path d="M21 3v6h-6"/></svg>Insights</h1>
+    <p class="subtitle">Ecosystem performance metrics and learning loop analytics</p>
+  </header>
+
+  <!-- KPI Strip -->
+  <div class="kpi-strip">
+    <div class="kpi"><div class="kpi-num" style="color:var(--score-high)">84%</div><div class="kpi-label">Avg Match Confidence</div><div class="kpi-trend" style="color:var(--score-high)">↑ 6% vs last cohort</div></div>
+    <div class="kpi"><div class="kpi-num">4.3</div><div class="kpi-label">Avg Outcome Rating</div><div class="kpi-trend" style="color:var(--score-high)">↑ 0.4 vs last cohort</div></div>
+    <div class="kpi"><div class="kpi-num">92%</div><div class="kpi-label">Approval Rate</div><div class="kpi-trend" style="color:var(--text-muted)">Stable</div></div>
+    <div class="kpi"><div class="kpi-num" style="color:var(--accent)">47</div><div class="kpi-label">Outcomes Collected</div><div class="kpi-trend" style="color:var(--score-high)">↑ 12 this month</div></div>
+  </div>
+
+  <div class="insights-grid">
+    <!-- Line Chart: Match Confidence Over Time -->
+    <div class="card chart-card">
+      <h3><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg> Average Match Confidence Over Time</h3>
+      <p class="subtitle">Across all cohorts</p>
+      <div class="chart-area" style="padding-left:40px">
+        <div class="lc-grid">
+          <div class="lc-grid-line"><span>100</span></div>
+          <div class="lc-grid-line"><span>80</span></div>
+          <div class="lc-grid-line"><span>60</span></div>
+          <div class="lc-grid-line"><span>40</span></div>
+          <div class="lc-grid-line"><span>20</span></div>
+        </div>
+        <svg class="lc-svg" viewBox="0 0 500 200" preserveAspectRatio="none" style="left:40px;width:calc(100% - 40px)">
+          <defs>
+            <linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#6366f1" stop-opacity=".3"/><stop offset="100%" stop-color="#6366f1" stop-opacity="0"/></linearGradient>
+          </defs>
+          <path d="M0,160 L62,140 L125,120 L187,100 L250,80 L312,70 L375,50 L437,40 L500,32" fill="none" stroke="#6366f1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M0,160 L62,140 L125,120 L187,100 L250,80 L312,70 L375,50 L437,40 L500,32 L500,200 L0,200Z" fill="url(#lg)"/>
+          <circle cx="0" cy="160" r="4" fill="#6366f1"/><circle cx="62" cy="140" r="4" fill="#6366f1"/><circle cx="125" cy="120" r="4" fill="#6366f1"/><circle cx="187" cy="100" r="4" fill="#6366f1"/><circle cx="250" cy="80" r="4" fill="#6366f1"/><circle cx="312" cy="70" r="4" fill="#6366f1"/><circle cx="375" cy="50" r="4" fill="#6366f1"/><circle cx="437" cy="40" r="4" fill="#6366f1"/><circle cx="500" cy="32" r="4" fill="#6366f1"/>
+        </svg>
+        <div class="lc-labels" style="padding-left:40px"><span>C1 '23</span><span>C2</span><span>C3</span><span>C4 '24</span><span>C5</span><span>C6</span><span>C7</span><span>C8 '25</span><span>C9 '26</span></div>
+      </div>
+    </div>
+
+    <!-- Bar Chart: Outcome Ratings by Industry -->
+    <div class="card chart-card">
+      <h3><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg> Outcome Ratings by Industry</h3>
+      <p class="subtitle">Average rating (1–5) per sector</p>
+      <div class="chart-area">
+        <div class="bar-chart">
+          <div class="bar-group"><div class="bar-val">4.6</div><div class="bar" style="height:92%;background:var(--accent)"></div><div class="bar-label">FinTech</div></div>
+          <div class="bar-group"><div class="bar-val">4.3</div><div class="bar" style="height:86%;background:#22c55e"></div><div class="bar-label">HealthTech</div></div>
+          <div class="bar-group"><div class="bar-val">4.1</div><div class="bar" style="height:82%;background:#3b82f6"></div><div class="bar-label">AgriTech</div></div>
+          <div class="bar-group"><div class="bar-val">3.8</div><div class="bar" style="height:76%;background:#f59e0b"></div><div class="bar-label">EdTech</div></div>
+          <div class="bar-group"><div class="bar-val">4.4</div><div class="bar" style="height:88%;background:#10b981"></div><div class="bar-label">GreenTech</div></div>
+          <div class="bar-group"><div class="bar-val">3.5</div><div class="bar" style="height:70%;background:#8b5cf6"></div><div class="bar-label">DeepTech</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Leaderboard: Top Mentors -->
+    <div class="card chart-card">
+      <h3><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px"><path d="M6 9H4.5a2.5 2.5 0 010-5C6 4 6 9 6 9zm12 0h1.5a2.5 2.5 0 000-5C18 4 18 9 18 9zm-3 11v-3a2 2 0 00-2-2h-2a2 2 0 00-2 2v3"/><path d="M12 4l1.5 3 3.5.5-2.5 2.5.5 3.5L12 12l-3 1.5.5-3.5L7 7.5 10.5 7z"/></svg> Top Performing Mentors</h3>
+      <p class="subtitle">By average outcome rating (min 2 outcomes)</p>
+      <div style="margin-top:16px">
+        <div class="lb-row">
+          <div class="lb-rank lb-rank-1">1</div>
+          <div class="lb-info"><div class="lb-name">Dr. Aisha Razak</div><div class="lb-detail">FinTech · 22 mentored · KL</div></div>
+          <div class="lb-stars">★★★★★</div>
+          <div class="lb-bar"><div class="lb-bar-fill" style="width:98%"></div></div>
+          <div class="lb-score" style="color:var(--score-high)">4.9</div>
+        </div>
+        <div class="lb-row">
+          <div class="lb-rank lb-rank-2">2</div>
+          <div class="lb-info"><div class="lb-name">Vincent Lau</div><div class="lb-detail">FinTech · 30 mentored · KL</div></div>
+          <div class="lb-stars">★★★★★</div>
+          <div class="lb-bar"><div class="lb-bar-fill" style="width:94%"></div></div>
+          <div class="lb-score" style="color:var(--score-high)">4.7</div>
+        </div>
+        <div class="lb-row">
+          <div class="lb-rank lb-rank-3">3</div>
+          <div class="lb-info"><div class="lb-name">Ahmad Faizal Osman</div><div class="lb-detail">AgriTech · 9 mentored · Sabah</div></div>
+          <div class="lb-stars">★★★★☆</div>
+          <div class="lb-bar"><div class="lb-bar-fill" style="width:90%"></div></div>
+          <div class="lb-score" style="color:var(--score-high)">4.5</div>
+        </div>
+        <div class="lb-row">
+          <div class="lb-rank lb-rank-n">4</div>
+          <div class="lb-info"><div class="lb-name">Prof. Kamal Ariffin</div><div class="lb-detail">EdTech · 7 mentored · KL</div></div>
+          <div class="lb-stars">★★★★☆</div>
+          <div class="lb-bar"><div class="lb-bar-fill" style="width:86%"></div></div>
+          <div class="lb-score">4.3</div>
+        </div>
+        <div class="lb-row">
+          <div class="lb-rank lb-rank-n">5</div>
+          <div class="lb-info"><div class="lb-name">Nurul Huda Ibrahim</div><div class="lb-detail">HealthTech · 10 mentored · KL</div></div>
+          <div class="lb-stars">★★★★☆</div>
+          <div class="lb-bar"><div class="lb-bar-fill" style="width:84%"></div></div>
+          <div class="lb-score">4.2</div>
+        </div>
+        <div class="lb-row">
+          <div class="lb-rank lb-rank-n">6</div>
+          <div class="lb-info"><div class="lb-name">Mohd Hafiz Rahman</div><div class="lb-detail">GreenTech · 4 mentored · KL</div></div>
+          <div class="lb-stars">★★★★☆</div>
+          <div class="lb-bar"><div class="lb-bar-fill" style="width:82%"></div></div>
+          <div class="lb-score">4.1</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Learning Loop Panel -->
+    <div class="card chart-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center">
+      <div class="loop-panel" style="width:100%">
+        <div class="loop-icon">🔄</div>
+        <div class="loop-title">Learning Loop Active</div>
+        <div class="loop-stat">47</div>
+        <div class="loop-desc">outcomes feeding next cohort's matching engine</div>
+        <div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:8px;text-align:center">
+          <div style="padding:10px;background:rgba(99,102,241,.08);border-radius:6px"><div style="font-size:1.125rem;font-weight:800;color:var(--accent)">312</div><div style="font-size:.625rem;color:var(--text-muted);text-transform:uppercase;margin-top:2px">Signal Tags</div></div>
+          <div style="padding:10px;background:rgba(34,197,94,.08);border-radius:6px"><div style="font-size:1.125rem;font-weight:800;color:var(--score-high)">+6%</div><div style="font-size:.625rem;color:var(--text-muted);text-transform:uppercase;margin-top:2px">Accuracy Gain</div></div>
+        </div>
+        <div class="loop-badge"><span class="loop-pulse"></span> System learning from every concluded relationship</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>document.addEventListener('click',e=>{document.querySelectorAll('.avatar-dropdown.open').forEach(d=>{if(!d.parentElement.contains(e.target))d.classList.remove('open')})});</script>
+</body>
+</html>

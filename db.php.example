@@ -1,0 +1,7 @@
+<?php
+$conn = mysqli_connect("YOUR_DB_HOST", "YOUR_DB_USER", "YOUR_DB_PASSWORD", "YOUR_DB_NAME");
+
+if (!$conn) {
+    die("Database connection failed: " . mysqli_connect_error());
+}
+?>

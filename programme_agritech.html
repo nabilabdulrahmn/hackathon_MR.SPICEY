@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AgriTech Bootcamp Sabah — EcosystemOS</title>
+<link rel="stylesheet" href="css/styles.css">
+<style>.breadcrumb{font-size:.75rem;color:var(--text-muted);margin-bottom:8px}.breadcrumb a{color:var(--text-muted)}.breadcrumb a:hover{color:var(--accent)}.page-title-row{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px}.page-title-row h1{display:flex;align-items:center;gap:10px}.title-actions{display:flex;gap:8px}.btn-danger{background:transparent;color:var(--score-low);border:1px solid rgba(239,68,68,.3)}.btn-danger:hover{background:var(--score-low-bg)}.three-col{display:grid;grid-template-columns:260px 1fr 280px;gap:20px;margin-top:24px}.info-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:.8125rem}.info-row:last-child{border-bottom:none}.info-label{color:var(--text-muted)}.info-value{color:var(--text-primary);font-weight:500;text-align:right}.rule-item{font-size:.8125rem;color:var(--text-secondary);padding:4px 0;display:flex;align-items:center;gap:6px}.rule-check{color:var(--score-high);font-size:.75rem}.mini-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px}.mini-stat{text-align:center;padding:10px 6px;background:var(--bg-surface);border-radius:6px}.mini-stat .num{font-size:1.25rem;font-weight:800;font-variant-numeric:tabular-nums}.mini-stat .lbl{font-size:.625rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.04em;margin-top:2px}.match-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px}.match-header select{background:var(--bg-input);border:1px solid var(--border);color:var(--text-primary);padding:6px 10px;border-radius:var(--r-input);font-family:inherit;font-size:.8125rem}.match-card{border:1px solid var(--border);border-radius:var(--r-card);padding:16px;margin-bottom:12px;background:var(--bg-card);transition:all .2s var(--ease)}.match-card:hover{border-color:var(--border-hover)}.mc-top{display:flex;justify-content:space-between;align-items:flex-start}.mc-identity{display:flex;align-items:center;gap:10px}.mc-avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.6875rem;font-weight:700;color:#fff;flex-shrink:0}.mc-name{font-weight:600;font-size:.875rem}.mc-role{font-size:.6875rem;padding:2px 8px;border-radius:var(--r-pill);background:var(--accent-muted);color:var(--accent-hover)}.mc-score{font-size:1.5rem;font-weight:800;font-variant-numeric:tabular-nums;padding:4px 14px;border-radius:var(--r-pill);min-width:56px;text-align:center}.mc-tags{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}.mc-tag{font-size:.6875rem;padding:2px 8px;border-radius:var(--r-pill);background:var(--bg-surface);color:var(--text-muted);border:1px solid var(--border)}.mc-reasoning{font-size:.8125rem;color:var(--text-secondary);line-height:1.6;margin:8px 0}.mc-risks{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}.mc-risk{font-size:.6875rem;padding:2px 8px;border-radius:var(--r-pill);font-weight:600}.mc-risk-green{background:var(--score-high-bg);color:var(--score-high)}.mc-risk-amber{background:var(--score-mid-bg);color:var(--score-mid)}.mc-actions{display:flex;gap:6px;margin-top:10px;align-items:center}.btn-approve{background:rgba(34,197,94,.15);color:var(--score-high);border:1px solid rgba(34,197,94,.3);font-size:.75rem;padding:5px 14px;border-radius:var(--r-btn);cursor:pointer;font-family:inherit;font-weight:600}.btn-reject{background:transparent;color:var(--text-muted);border:1px solid var(--border);font-size:.75rem;padding:5px 14px;border-radius:var(--r-btn);cursor:pointer;font-family:inherit}.rel-card{padding:12px;border:1px solid var(--border);border-radius:var(--r-card);margin-bottom:8px;background:var(--bg-card)}.rel-parties{font-size:.8125rem;font-weight:600}.rel-meta{font-size:.6875rem;color:var(--text-muted);margin-top:4px}.rel-progress{height:4px;background:var(--border);border-radius:2px;margin-top:8px;overflow:hidden}.rel-progress-fill{height:100%;background:var(--accent);border-radius:2px}.section-count{background:var(--accent-muted);color:var(--accent);font-size:.6875rem;font-weight:700;padding:2px 8px;border-radius:var(--r-pill);margin-left:8px}.empty-state{text-align:center;padding:24px;color:var(--text-muted);font-size:.8125rem;line-height:1.6}@media(max-width:1100px){.three-col{grid-template-columns:1fr;}}</style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="dashboard.html" class="topnav-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><circle cx="12" cy="7" r="3" fill="currentColor" stroke="none" opacity=".9"/><circle cx="5" cy="18" r="3" fill="currentColor" stroke="none" opacity=".9"/><circle cx="19" cy="18" r="3" fill="currentColor" stroke="none" opacity=".9"/><line x1="12" y1="10" x2="5" y2="15" opacity=".5"/><line x1="12" y1="10" x2="19" y2="15" opacity=".5"/><line x1="5" y1="18" x2="19" y2="18" opacity=".5"/></svg>EcosystemOS</a>
+  <div class="topnav-links"><a href="dashboard.html">Dashboard</a><a href="templates.html">Templates</a><a href="programme.php" class="active">Programmes</a><a href="entities.html">Entities</a><a href="insights.html">Insights</a></div>
+  <div class="topnav-right"><span class="topnav-org">Organisation: Cradle Fund</span><div class="topnav-avatar" onclick="this.querySelector('.avatar-dropdown').classList.toggle('open')">FH<div class="avatar-dropdown"><a href="#">Profile</a><a href="index.html">Sign out</a></div></div></div>
+</nav>
+<div class="page">
+  <div class="breadcrumb"><a href="dashboard.html">Dashboard</a> › <a href="programme.php">Programmes</a> › AgriTech Bootcamp Sabah</div>
+  <div class="page-title-row">
+    <h1>AgriTech Bootcamp Sabah 2026 <span class="pill pill-active">Active</span></h1>
+    <div class="title-actions"><button class="btn btn-secondary" onclick="alert('Edit Programme modal')">Edit Programme</button><button class="btn btn-danger" onclick="alert('End Programme confirmation')">End Programme</button></div>
+  </div>
+  <div class="three-col">
+    <div>
+      <div class="card" style="margin-bottom:12px">
+        <h3 style="margin-bottom:12px">Programme Details</h3>
+        <div class="info-row"><span class="info-label">Template</span><a href="templates.html" class="info-value" style="font-size:.8125rem">AgriTech Bootcamp</a></div>
+        <div class="info-row"><span class="info-label">Location</span><span class="info-value">Kota Kinabalu, Sabah</span></div>
+        <div class="info-row"><span class="info-label">Started</span><span class="info-value">1 May 2026</span></div>
+        <div class="info-row"><span class="info-label">Ends</span><span class="info-value">31 Jul 2026</span></div>
+        <div class="info-row"><span class="info-label">Programme Lead</span><span class="info-value">Ahmad Faizal Osman</span></div>
+        <div class="info-row"><span class="info-label">Cohort Size</span><span class="info-value">6 startups · 4 mentors</span></div>
+      </div>
+      <div class="card" style="margin-bottom:12px">
+        <h3 style="margin-bottom:12px">Active Rule Set</h3>
+        <div class="rule-item"><span class="rule-check">●</span> 1 Lead + 1 Support Mentor per startup</div>
+        <div class="rule-item"><span class="rule-check">●</span> Duration: 3 months</div>
+        <div class="rule-item" style="margin:6px 0">Industry Focus:</div>
+        <div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:8px"><span class="chip">AgriTech</span></div>
+        <div style="font-size:.75rem;color:var(--text-muted);margin-top:8px;border-top:1px solid var(--border);padding-top:8px">Eligibility:</div>
+        <div class="rule-item"><span class="rule-check">✓</span> Max company age 3 years</div>
+        <div class="rule-item"><span class="rule-check">✓</span> Max revenue RM 1M</div>
+        <div class="rule-item"><span class="rule-check">✓</span> Min 51% Malaysian-owned</div>
+        <div class="rule-item" style="margin-top:8px"><span style="color:var(--accent)">◎</span> Confidence threshold: <strong>75</strong></div>
+      </div>
+      <div class="card">
+        <h3 style="margin-bottom:12px">Programme Stats</h3>
+        <div class="mini-stats">
+          <div class="mini-stat"><div class="num" style="color:var(--text-primary)">12</div><div class="lbl">Proposed</div></div>
+          <div class="mini-stat"><div class="num" style="color:var(--score-high)">9</div><div class="lbl">Approved</div></div>
+          <div class="mini-stat"><div class="num" style="color:var(--score-low)">2</div><div class="lbl">Rejected</div></div>
+          <div class="mini-stat"><div class="num" style="color:var(--score-mid)">1</div><div class="lbl">Awaiting</div></div>
+        </div>
+        <div style="text-align:center;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)"><div class="label">Avg Score</div><div style="font-size:1.75rem;font-weight:800;color:var(--score-high);font-variant-numeric:tabular-nums">84</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="match-header">
+        <div style="display:flex;align-items:center;gap:8px"><h2>Proposed Matches for</h2><select><option>AgriSense</option><option>AquaCulture AI</option><option>PadiTech</option><option>FreshKart</option></select></div>
+        <button class="btn btn-primary" onclick="this.textContent='⏳ Generating...';var s=this;setTimeout(function(){s.textContent='✨ Generate Matches';alert('Gemini AI generated new match proposals.')},1500)">✨ Generate Matches</button>
+      </div>
+      <div class="match-card">
+        <div class="mc-top"><div class="mc-identity"><div class="mc-avatar" style="background:#6366f1">AF</div><div><div class="mc-name">Ahmad Faizal Osman</div><span class="mc-role">Lead Mentor candidate</span></div></div><div class="mc-score score-high">94</div></div>
+        <div class="mc-tags"><span class="mc-tag">AgriTech pioneer</span><span class="mc-tag">IoT sensors</span><span class="mc-tag">Sabah-based</span></div>
+        <div class="mc-reasoning">Perfect geography and industry match. Ahmad's 14 years at Sime Darby leading IoT adoption across palm oil estates directly maps to AgriSense's soil monitoring mission. 9 startups mentored previously.</div>
+        <div class="mc-risks"><span class="mc-risk mc-risk-green">✓ No risks flagged</span></div>
+        <div class="mc-actions"><button class="btn-approve" onclick="this.textContent='✓ Approved';this.disabled=true;this.style.opacity='.6'">✓ Approve</button><button class="btn-reject">Reject</button><a href="javascript:void(0)" style="font-size:.75rem;margin-left:auto" onclick="alert('Ahmad Faizal Osman — AgriTech · Agri-Innovation Director, Sime Darby · 14 years exp · 9 startups · ★★★★★ (4.9)')">View Mentor Profile</a></div>
+      </div>
+      <div class="match-card">
+        <div class="mc-top"><div class="mc-identity"><div class="mc-avatar" style="background:#22c55e">RA</div><div><div class="mc-name">Datin Rosnah Abdullah</div><span class="mc-role">Support Mentor candidate</span></div></div><div class="mc-score score-high">88</div></div>
+        <div class="mc-tags"><span class="mc-tag">Aquaculture expert</span><span class="mc-tag">FAMA networks</span><span class="mc-tag">Sabah-based</span></div>
+        <div class="mc-reasoning">Deep FAMA distribution knowledge crucial for AgriSense's market access. 22 years of marine biology and aquaculture expertise. Perfect Sabah geography match.</div>
+        <div class="mc-risks"><span class="mc-risk mc-risk-green">✓ No risks flagged</span></div>
+        <div class="mc-actions"><button class="btn-approve" onclick="this.textContent='✓ Approved';this.disabled=true;this.style.opacity='.6'">✓ Approve</button><button class="btn-reject">Reject</button><a href="javascript:void(0)" style="font-size:.75rem;margin-left:auto" onclick="alert('Datin Rosnah Abdullah — AgriTech · Prof Emeritus, UMS · 22 years exp · 5 startups · ★★★★☆ (4.5)')">View Mentor Profile</a></div>
+      </div>
+      <div class="match-card">
+        <div class="mc-top"><div class="mc-identity"><div class="mc-avatar" style="background:#f59e0b">FD</div><div><div class="mc-name">Dr. Farah Diyana</div><span class="mc-role">Support Mentor candidate</span></div></div><div class="mc-score score-mid">76</div></div>
+        <div class="mc-tags"><span class="mc-tag">Food science</span><span class="mc-tag">Halal certification</span><span class="mc-tag">KL-based</span></div>
+        <div class="mc-reasoning">Halal certification and cold chain logistics expertise valuable for AgriSense's downstream processing. Geography mismatch (KL vs Sabah) is moderate risk.</div>
+        <div class="mc-risks"><span class="mc-risk mc-risk-amber">Geography: KL vs Sabah startup</span></div>
+        <div class="mc-actions"><button class="btn-approve" onclick="this.textContent='✓ Approved';this.disabled=true;this.style.opacity='.6'">✓ Approve</button><button class="btn-reject">Reject</button><a href="javascript:void(0)" style="font-size:.75rem;margin-left:auto" onclick="alert('Dr. Farah Diyana — AgriTech/Food Science · R&D Manager, Nestle MY · 10 years exp · 2 startups · ★★★★☆ (4.0)')">View Mentor Profile</a></div>
+      </div>
+      <div class="match-card" style="border-color:rgba(245,158,11,.3);background:linear-gradient(135deg,var(--bg-card),rgba(245,158,11,.03))">
+        <div style="font-size:.75rem;padding:6px 12px;border-radius:6px;margin-bottom:10px;font-weight:500;background:var(--score-mid-bg);color:var(--score-mid)">⚠️ Needs Human Review — confidence below threshold (75)</div>
+        <div class="mc-top"><div class="mc-identity"><div class="mc-avatar" style="background:#71717a">LJ</div><div><div class="mc-name">Lee Jia Hao</div><span class="mc-role">Support Mentor candidate</span></div></div><div class="mc-score score-low">68</div></div>
+        <div class="mc-tags"><span class="mc-tag">Drone technology</span><span class="mc-tag">Limited mentoring (1 startup)</span></div>
+        <div class="mc-reasoning">Drone remote sensing expertise relevant for AgriSense's field monitoring, but only 1 prior mentorship. Score adjusted down for data sparsity. Profile unverified.</div>
+        <div class="mc-risks"><span class="mc-risk mc-risk-amber">Data sparsity</span><span class="mc-risk mc-risk-amber">Unverified profile</span></div>
+        <div class="mc-actions"><button class="btn-approve" onclick="this.textContent='✓ Approved';this.disabled=true;this.style.opacity='.6'">✓ Approve</button><button class="btn-reject">Reject</button><a href="javascript:void(0)" style="font-size:.75rem;margin-left:auto" onclick="alert('Lee Jia Hao — AgriTech · Drone engineer, independent · 5 years exp · 1 startup · ⚠ Unverified')">View Mentor Profile</a></div>
+      </div>
+    </div>
+    <div>
+      <h3 style="margin-bottom:12px">Active Relationships <span class="section-count">9</span></h3>
+      <div class="rel-card"><div class="rel-parties">Ahmad Faizal ↔ AgriSense</div><div class="rel-meta">Started 5 May 2026 · 12 days active</div><div class="rel-progress"><div class="rel-progress-fill" style="width:13%"></div></div></div>
+      <div class="rel-card"><div class="rel-parties">Datin Rosnah ↔ AquaCulture AI</div><div class="rel-meta">Started 5 May 2026 · 12 days active</div><div class="rel-progress"><div class="rel-progress-fill" style="width:13%"></div></div></div>
+      <div class="rel-card"><div class="rel-parties">Dr. Farah Diyana ↔ FreshKart</div><div class="rel-meta">Started 7 May 2026 · 10 days active</div><div class="rel-progress"><div class="rel-progress-fill" style="width:11%"></div></div></div>
+      <h3 style="margin:24px 0 12px">Concluded (this cohort) <span class="section-count">0</span></h3>
+      <div class="card empty-state"><div style="font-size:1.5rem;margin-bottom:8px;opacity:.3">🌾</div>No concluded relationships yet.<br>3-month bootcamp — early stage.</div>
+    </div>
+  </div>
+</div>
+<script>document.addEventListener('click',function(e){document.querySelectorAll('.avatar-dropdown.open').forEach(function(d){if(!d.parentElement.contains(e.target))d.classList.remove('open')})});</script>
+</body>
+</html>

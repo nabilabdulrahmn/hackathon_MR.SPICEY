@@ -1,0 +1,12 @@
+# Ignore database configuration
+db.php
+
+# Ignore database dumps
+*.sql
+
+# Ignore all active credentials and keys, but keep templates
+secure_keys/*
+!secure_keys/*.example
+
+# Ignore log files
+*.log
